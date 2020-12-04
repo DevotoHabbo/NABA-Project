@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="0c2b01e2-0e97-4d1b-9077-0a470e3e3971" ChangeDateTime="12/01/2020 20:42:23">
+    <Property Name="ElementName" Value="[dbo].[People].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[People]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Person_Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ac306e09-d50f-478e-b807-f35ce4ceec53" ChangeDateTime="12/01/2020 22:01:03">
+    <Property Name="ElementName" Value="[dbo].[Logs].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Logs]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Log_Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a20dec4e-9006-4d64-9b41-8fb16d0fd1a2" ChangeDateTime="12/04/2020 16:09:37">
+    <Property Name="ElementName" Value="[dbo].[Phuong_Posts].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Phuong_Posts]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PostId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6f69dd27-2dd7-43d7-ab1b-c7d6d0149ec3" ChangeDateTime="12/04/2020 16:22:15">
+    <Property Name="ElementName" Value="[dbo].[Phuong_Comments].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Phuong_Comments]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CommentId" />
+  </Operation>
+</Operations>
