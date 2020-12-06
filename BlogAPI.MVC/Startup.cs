@@ -21,7 +21,7 @@ namespace BlogAPI.MVC
         {
             Configuration = configuration;
         }
-
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -33,6 +33,7 @@ namespace BlogAPI.MVC
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddScoped<IPostRepo, PostRepo>();
+            services.AddCors(options =>{options.AddPolicy(name: MyAllowSpecificOrigins,builder =>{builder.WithOrigins("http://localhost:3001/", "http://localhost:3000/");});});
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
@@ -55,6 +56,8 @@ namespace BlogAPI.MVC
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseAuthentication();
             app.UseAuthorization();
