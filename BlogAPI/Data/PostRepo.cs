@@ -85,6 +85,7 @@ namespace BlogAPI.Data
             {
                 connection.Open();
                 connection.Execute(@"EXEC dbo.Post_Delete @PostId=@PostId", new { PostId = postId });
+                connection.Execute(@"EXEC dbo.Comment_Delete_ByPostId @PostId=@PostId", new { PostId = postId });
             }
         }
         //Comment Repo

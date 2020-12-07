@@ -78,6 +78,7 @@
     <Build Include="dbo\StoredProcedures\Comment_Update.sql" />
     <Build Include="dbo\StoredProcedures\Comment_Get_ById.sql" />
     <Build Include="dbo\StoredProcedures\Comment_Delete.sql" />
+    <Build Include="dbo\StoredProcedures\Comment_Delete_ByPostId.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Blog.Database.refactorlog" />

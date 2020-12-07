@@ -46,9 +46,8 @@ namespace BlogAPI
             }
 
             app.UseHttpsRedirection();
-
+            app.UseCors("MyPolicy");
             app.UseRouting();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
