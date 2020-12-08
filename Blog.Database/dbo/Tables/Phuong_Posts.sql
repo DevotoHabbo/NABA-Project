@@ -5,5 +5,5 @@
     [Content] NVARCHAR(MAX) NOT NULL, 
     [UserId] NCHAR(150) NOT NULL,
     [UserName] NCHAR(150) NOT NULL, 
-    [Created] DATETIME2 NULL DEFAULT getutcdate()
+    [Created] DATETIME2 NULL DEFAULT CURRENT_TIMESTAMP
 )

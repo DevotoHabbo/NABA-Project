@@ -28,7 +28,7 @@ namespace BlogAPI
         {
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
-                builder.AllowAnyOrigin()
+                builder.WithOrigins("https://phuongreact.azurewebsites.net/")
                        .AllowAnyMethod()
                        .AllowAnyHeader();
             })); services.AddControllersWithViews();
