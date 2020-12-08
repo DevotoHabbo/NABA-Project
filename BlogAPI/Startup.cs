@@ -16,6 +16,8 @@ namespace BlogAPI
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -26,11 +28,9 @@ namespace BlogAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            services.AddCors(o => o.AddPolicy(name:MyAllowSpecificOrigins, builder =>
             {
-                builder.WithOrigins("https://phuongreact.azurewebsites.net/")
-                       .AllowAnyMethod()
-                       .AllowAnyHeader();
+                builder.WithOrigins("https://phuongreact.azurewebsites.net/");
             })); services.AddControllersWithViews();
             services.AddScoped<IPostRepo,PostRepo>();
             services.AddControllers();
@@ -46,7 +46,7 @@ namespace BlogAPI
             }
 
             app.UseHttpsRedirection();
-            app.UseCors("MyPolicy");
+            app.UseCors(MyAllowSpecificOrigins);
             app.UseRouting();
             app.UseAuthorization();
 
