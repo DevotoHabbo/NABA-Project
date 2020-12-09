@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BlogAPI.Data;
+using BlogAPI.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -43,7 +44,7 @@ namespace BlogAPI
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();
-
+            app.UseMiddleware<ApiKeyMiddleware>();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
