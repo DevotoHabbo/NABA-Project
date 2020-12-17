@@ -23,7 +23,7 @@ namespace BlogAPI.Data
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                var post = connection.QueryFirstOrDefault<PostGetOne>(@"EXEC dbo.Post_GetById @PostId=@PostId", new { PostId = postId });
+                var post = connection.QueryFirstOrDefault<PostGetOne>(@"EXEC dbo.Post_GetOne @PostId=@PostId", new { PostId = postId });
                 return post;
             }
         }
@@ -32,7 +32,7 @@ namespace BlogAPI.Data
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                return connection.Query<PostGetMany>(@"EXEC dbo.Posts_Get");
+                return connection.Query<PostGetMany>(@"EXEC dbo.Post_GetMany");
             }
         }
 

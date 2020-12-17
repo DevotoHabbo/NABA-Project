@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[Posts_Get]
+﻿CREATE PROCEDURE [dbo].[Post_GetMany]
 	
 AS
 begin

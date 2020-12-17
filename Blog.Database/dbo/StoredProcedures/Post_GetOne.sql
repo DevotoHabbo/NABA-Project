@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[Post_GetById]
+﻿CREATE PROCEDURE [dbo].[Post_GetOne]
 	@PostId int
 AS
 begin

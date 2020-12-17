@@ -4,6 +4,6 @@
     [Title] NCHAR(256) NOT NULL, 
     [Content] NVARCHAR(MAX) NOT NULL,
     [UserId] NCHAR(128) NOT NULL,
-    [Created] DATETIME2 NULL DEFAULT CURRENT_TIMESTAMP, 
+    [Created] DATETIME2 NULL DEFAULT getutcdate(), 
 
 )

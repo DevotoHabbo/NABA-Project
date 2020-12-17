@@ -40,6 +40,7 @@ namespace BlogAPI
             //    options.Audience = " https://qanda";
             //});
             services.AddScoped<IPostRepo,PostRepo>();
+            services.AddScoped<IUserRepo, UserRepo>();
             services.AddControllers();
 
         }
