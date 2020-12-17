@@ -1,5 +1,4 @@
-﻿using BlogAPI.Models.CommentModels;
-using BlogAPI.Models.PostModels;
+﻿using BlogAPI.Models.PostModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,5 +1,4 @@
-﻿using BlogAPI.Models.CommentModels;
-using BlogAPI.Models.PostModels;
+﻿using BlogAPI.Models.PostModels;
 using Dapper;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -59,7 +58,7 @@ namespace BlogAPI.Data
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                var postId = connection.QueryFirst<int>(@"EXEC dbo.Post_Insert @Title=@Title,@Content=@Content", post);
+                var postId = connection.QueryFirst<int>(@"EXEC dbo.Post_Insert @Title=@Title,@Content=@Content,@UserId=@UserId", post);
                 return GetPost(postId);
             }
         }
