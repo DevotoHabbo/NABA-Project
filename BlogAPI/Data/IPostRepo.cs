@@ -18,8 +18,5 @@ namespace BlogAPI.Data
         PostGetOne ChangePost(int postId,ChangePostRequest post);
         void DeletePost(int postId);
 
-        // Comment
-        CommentGet GetComment(int commentId);
-        CommentGet NewComment(NewCommentRequest comment);
     }
 }

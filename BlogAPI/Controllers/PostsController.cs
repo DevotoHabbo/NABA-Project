@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using BlogAPI.Atributes;
 using BlogAPI.Data;
 using BlogAPI.Models;
-using BlogAPI.Models.CommentModels;
 using BlogAPI.Models.PostModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -35,7 +35,6 @@ namespace BlogAPI.Controllers
                 return _postRepo.GetPostsBySearch(search);
             }
         }
-
         // GET api/<PostsController>/5
         [HttpGet("{postId}")]
         public ActionResult<PostGetOne> GetPost(int postId)
@@ -56,19 +55,6 @@ namespace BlogAPI.Controllers
             return CreatedAtAction(nameof(GetPost), new { postId = savedPost.PostId }, savedPost);
 
         }
-        // POST api/<PostsController>/comment
-        [HttpPost("comment")]
-        public ActionResult<CommentGet> NewComment(NewCommentRequest newCommentRequest)
-        {
-            var postExists = _postRepo.PostExists(newCommentRequest.PostId);
-            if (!postExists)
-            {
-                return NotFound();
-            }
-            var savedComment = _postRepo.NewComment(newCommentRequest);
-            return savedComment;
-        }
-
         // PUT api/<PostsController>/5
         [HttpPut("{postId}")]
         public ActionResult<PostGetOne> ChangePost(int postId, ChangePostRequest changePostRequest)

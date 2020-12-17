@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BlogAPI.Data;
 using BlogAPI.Middleware;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,7 +28,17 @@ namespace BlogAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddControllersWithViews();
+            //services.AddAuthentication(options =>
+            //{
+            //    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            //    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            //}).AddJwtBearer(options =>
+            //{
+            //    options.Authority = "https://dev-hm3vk5w8.us.auth0.com/";
+            //    options.Audience = " https://qanda";
+            //});
             services.AddScoped<IPostRepo,PostRepo>();
             services.AddControllers();
 
@@ -43,6 +54,7 @@ namespace BlogAPI
 
             app.UseHttpsRedirection();
             app.UseRouting();
+            //app.UseAuthentication();
             app.UseAuthorization();
             app.UseMiddleware<ApiKeyMiddleware>();
             app.UseEndpoints(endpoints =>

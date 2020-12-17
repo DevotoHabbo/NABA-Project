@@ -25,14 +25,9 @@ namespace BlogAPI.Data
             {
                 connection.Open();
                 var post = connection.QueryFirstOrDefault<PostGetOne>(@"EXEC dbo.Post_GetById @PostId=@PostId", new { PostId = postId });
-                if (post !=null)
-                {
-                    post.Comments = connection.Query<CommentGet>(@"EXEC dbo.Comment_GetBy_PostId @PostId = @PostId", new { PostId = postId });
-                }
                 return post;
             }
         }
-
         public IEnumerable<PostGetMany> GetPosts()
         {
             using (var connection = new SqlConnection(_connectionString))
@@ -64,7 +59,7 @@ namespace BlogAPI.Data
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                var postId = connection.QueryFirst<int>(@"EXEC dbo.Post_Insert @Title=@Title,@Content=@Content,@UserId=@UserId,@UserName=@UserName", post);
+                var postId = connection.QueryFirst<int>(@"EXEC dbo.Post_Insert @Title=@Title,@Content=@Content", post);
                 return GetPost(postId);
             }
         }
@@ -85,24 +80,6 @@ namespace BlogAPI.Data
             {
                 connection.Open();
                 connection.Execute(@"EXEC dbo.Post_Delete @PostId=@PostId", new { PostId = postId });
-                connection.Execute(@"EXEC dbo.Comment_Delete_ByPostId @PostId=@PostId", new { PostId = postId });
-            }
-        }
-        //Comment Repo
-        public CommentGet GetComment(int commentId)
-        {
-            using (var connection = new SqlConnection(_connectionString))
-            {
-                connection.Open();
-                return connection.QueryFirstOrDefault<CommentGet>(@"EXEC dbo.Comment_Get_ById @CommentId=@CommentId", new { CommentId = commentId });
-            }
-        }
-        public CommentGet NewComment(NewCommentRequest comment)
-        {
-            using (var connection = new SqlConnection(_connectionString))
-            {
-                connection.Open();
-                return connection.QueryFirst<CommentGet>(@"EXEC dbo.Comment_Insert @PostId=@PostId,@Content=@Content,@UserId=@UserId,@UserName=@UserName", comment);
             }
         }
     }
