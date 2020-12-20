@@ -6,8 +6,4 @@ begin
 		select PostId,Title,Content,Created
 		from dbo.Phuong_Posts
 		where Title like '%' + @Search + '%'
-	union
-		select PostId,Title,Content,Created
-		from dbo.Phuong_Posts
-		where Content like '%' + @Search + '%'
 end
