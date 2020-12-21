@@ -56,7 +56,7 @@ namespace BlogAPI.Controllers
 
         }
         // PUT api/<PostsController>/5
-        [HttpPut("{postId}")]
+        [HttpPatch("{postId}")]
         public ActionResult<PostGetOne> ChangePost(int postId, ChangePostRequest changePostRequest)
         {
             var post = _postRepo.GetPost(postId);
